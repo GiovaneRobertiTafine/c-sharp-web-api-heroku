@@ -50,7 +50,7 @@ namespace c_sharp_web_api_heorku.Controllers
         [Route("empresas")]
         [ProducesResponseType(typeof(Empresas), StatusCodes.Status200OK)]
         [ProducesResponseType(500)]
-        public IActionResult GetEmpresas()
+        public async Task<ActionResult> GetEmpresas()
         {
             try
             {
@@ -62,7 +62,7 @@ namespace c_sharp_web_api_heorku.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode((int)HttpStatusCode.InternalServerError);
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
             }
 
         }
