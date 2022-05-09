@@ -19,6 +19,7 @@ namespace c_sharp_web_api_heorku
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            
         }
 
         public IConfiguration Configuration { get; }
@@ -27,7 +28,10 @@ namespace c_sharp_web_api_heorku
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            services.AddCors();
+            
+            services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin()
+                                                                    .AllowAnyMethod()
+                                                                     .AllowAnyHeader()));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
