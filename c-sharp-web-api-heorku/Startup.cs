@@ -27,7 +27,7 @@ namespace c_sharp_web_api_heorku
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            
+            services.AddCors();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
