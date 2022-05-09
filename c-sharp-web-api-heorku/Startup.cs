@@ -29,9 +29,6 @@ namespace c_sharp_web_api_heorku
         {
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             
-            services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin()
-                                                                    .AllowAnyMethod()
-                                                                     .AllowAnyHeader()));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -52,6 +49,12 @@ namespace c_sharp_web_api_heorku
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(x =>
+                x.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+            );
 
             app.UseAuthorization();
 
